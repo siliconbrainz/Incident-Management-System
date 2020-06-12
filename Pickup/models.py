@@ -40,7 +40,7 @@ class PickUp(models.Model):
 
     user = models.ForeignKey(User,
                              on_delete=models.DO_NOTHING, null=True, blank=True)
-    rcNo = models.CharField(max_length=255, null=True, blank=True)
+    # rcNo = models.CharField(max_length=255, null=True, blank=True)
 
     # def __str__(self):
     #     return self.customerRemarks
