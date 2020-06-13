@@ -15,4 +15,4 @@ class SalesDataSerializer(ModelSerializer):
 
 def CustomerTrackSerializer(SalesData):
 
-    return {"name": SalesData.name, "address": SalesData.address, "phNo": SalesData.phNo, "email": SalesData.email, "address": SalesData.email, "rcNo": SalesData.rcNo, "model": SalesData.model,"customer_token":SalesData.customer_token, "data_of_purchased": SalesData.purchase_date}
+    return {"name": SalesData.name, "address": SalesData.address, "phNo": SalesData.phNo, "email": SalesData.email, "address": SalesData.email, "rcNo": SalesData.rcNo, "model": SalesData.model,"customer_token":SalesData.customer_token, "data_of_purchased": SalesData.purchase_date,"status":SalesData.status}

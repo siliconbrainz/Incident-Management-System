@@ -7,7 +7,8 @@ class Drop(models.Model):
     remarks = models.TextField(null=True, blank=True)
     user = models.ForeignKey(
         User, on_delete=models.DO_NOTHING, null=True, blank=True)
-    drop_date = models.DateTimeField(auto_now_add=True)
+    customer_token=models.CharField(null=True,blank=True,max_length=255)
+    drop_date = models.DateTimeField(auto_now_add=True,null=True,blank=True)
 
     def __str__(self):
         return self.remarks

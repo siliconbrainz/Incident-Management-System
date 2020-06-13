@@ -37,9 +37,10 @@ class PickUp(models.Model):
         null=True, blank=True, upload_to='photos/%Y/%m/%d/')
     customerRemarks = models.TextField(null=True, blank=False)
     # customerSignature = models.JSignatureField()
-
+    customer_token=models.CharField(null=True,blank=True,max_length=255)
     user = models.ForeignKey(User,
                              on_delete=models.DO_NOTHING, null=True, blank=True)
+    pick_date=models.DateTimeField(auto_now_add=True,null=True,blank=True)
     # rcNo = models.CharField(max_length=255, null=True, blank=True)
 
     # def __str__(self):

@@ -7,7 +7,7 @@ from CustomerData.models import CSR, SalesData,CustomerTrack
 from .serializers import DropSerializer
 from CustomerData.serializers import CSRSerializer, SalesDataSerializer,CustomerTrackSerializer
 from .models import Drop
-
+from Completed.models import SaveCompleteReport
 
 class DropView(APIView):
     def get(self, request, customerToken=None, format=None):
@@ -37,9 +37,10 @@ class DropView(APIView):
         elif SalesData1.status=='PICKED':
             serializer = DropSerializer(data=data)
             if serializer.is_valid():
-                serializer.save(user=request.user)
+                serializer.save(user=request.user,customer_token=customerToken)
                 SalesData1.status='COMPLETED'
                 SalesData1.save()
+                SaveCompleteReport(CustomerTrack.objects.get(customer_token=customerToken))
                 CustomerData = [CustomerTrackSerializer(SalesData) for SalesData in CustomerTrack.objects.all().filter(
                     customer_token=customerToken,status__iexact='COMPLETED')]
                 # client = Client(settings.TWILIO_ACCOUNT_SID,

@@ -39,7 +39,7 @@ class PickupView(APIView):
         if SalesData1.status=='ASSIGNED':
             serializer = PickUpSerializer(data=data)
             if serializer.is_valid():
-                serializer.save(user=request.user)
+                serializer.save(user=request.user,customer_token=customerToken)
                 SalesData1.status='PICKED'
                 SalesData1.save()
                 CustomerData = [CustomerTrackSerializer(SalesData) for SalesData in CustomerTrack.objects.all().filter(
